@@ -57,7 +57,7 @@ const Scanner = () => {
             delay={500}
             key="environment"
             onError={handleError}
-            constraints={{ facingMode: "environment" }}
+            consteraints={{ facingMode: "environment" }}
             onScan={handleScan}
             style={{ width: "100%" }}
             legacyMode={false}

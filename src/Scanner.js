@@ -126,6 +126,9 @@ const Scanner = () => {
             ref={qrScannerRef}
             delay={500}
             onError={handleError}
+            constraints={{
+              facingMode: 'environment'
+          }}
             onScan={handleScan}
             style={{ width: "100%" }}
             legacyMode={false}

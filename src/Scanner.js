@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { MdOutlineCameraswitch } from "react-icons/md";
 import { retrieveDataById } from "./firebaseuttils";
@@ -31,7 +31,31 @@ const Scanner = () => {
       }
     }
   };
+  useEffect(() => {
+    // Add this at the beginning of your JavaScript code or in your main entry point
 
+// Your React component code...
+
+    const videoElement = document.getElementById("qr-video");
+  
+    if (videoElement && !showDialog && !processing) {
+      videoElement.play().catch((error) => {
+        console.warn("Error playing video:", error);
+      });
+    }
+  
+    return () => {
+      if (videoElement) {
+        videoElement.pause();
+      }
+    };
+  }, [showDialog, processing]);
+  
+  
+  
+  
+  
+  
   const handleError = (err) => {
     console.error(err);
   };
@@ -50,12 +74,13 @@ const Scanner = () => {
       <div className="camerabox">
         {!showDialog && !processing && (
           <QrReader
-          style={{ width: "300px" }}
-
+            id="qr-video"
+            style={{ width: "300px" }}
             facingMode={selected}
             delay={500}
             onError={handleError}
             onScan={handleScan}
+          
           />
         )}
         <button onClick={toggleCamera} className="camera-toggle-button">

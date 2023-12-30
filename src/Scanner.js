@@ -55,6 +55,7 @@ const Scanner = () => {
           <QrScanner
             facingMode={selected}
             delay={500}
+            key="environment"
             onError={handleError}
             consttraints={{ facingMode: "environment" }}
             onScan={handleScan}

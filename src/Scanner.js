@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import QrScanner from "react-qr-scanner";
 import "./App.css";
 import { useNavigate } from "react-router-dom";
@@ -34,6 +34,19 @@ const Scanner = () => {
       }
     }
   };
+
+  useEffect(() => {
+    const isMobileDevice =
+      navigator.userAgent &&
+      /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    if (isMobileDevice) {
+      setSelected("rear");
+    } else {
+      setSelected("front");
+    }
+  }, []);
+
+
   const handleError = (err) => {
     console.error(err);
   };
@@ -53,11 +66,10 @@ const Scanner = () => {
       <div className="camerabox">
         {!showDialog && !processing && (
           <QrScanner
-            facingMode={selected}
+            facingMode={selected} // Set facingMode explicitly to 'environment' for the back camera
             delay={500}
             key="environment"
             onError={handleError}
-            // constraints={{ facingMode: "environment" }}
             onScan={handleScan}
             style={{ width: "100%" }}
             legacyMode={false}

@@ -14,15 +14,7 @@ const Scanner = () => {
   const [selected, setSelected] = useState("rear");
   const [errorMessage, setErrorMessage] = useState(null);
 
-  // const handleScan = async (scanData) => {
-  //   console.log(`loaded data data`, scanData);
 
-  //   if (scanData && scanData !== "" && !showDialog && !processing) {
-  //     console.log(`loaded >>>`, scanData.text);
-  //     setSelected("");
-  //     setPrecScan(scanData.text);
-  //   }
-  // };
   const handleScan = async (scanData) => {
 
     if (scanData && scanData !== "" && !showDialog && !processing) {
@@ -47,14 +39,14 @@ const Scanner = () => {
   };
 
   const toggleCamera = () => {
-    setSelected((prevSelected) => (prevSelected === "rear" ? "front" : "rear"));
+    setSelected("rear");
   };
 
   return (
     <div className="App">
       <h2 className="custom-logo-head">ARLUMIGU THANDAYUTHAPANI KOVIL</h2>
       <h2 className="custom-logo-head">அருள்மிகு தண்டாயுதபாணி கோவில்</h2>
-      <h2>Last Scan:{precScan} {selected}</h2>
+      {/* <h2>Last Scan:{precScan} {selected}</h2> */}
 
 
 
@@ -69,9 +61,9 @@ const Scanner = () => {
             legacyMode={false}
           />
         )}
-        <button onClick={toggleCamera} className="camera-toggle-button">
+        {/* <button onClick={toggleCamera} className="camera-toggle-button">
           {selected === "rear" ? <MdOutlineCameraswitch /> : <MdOutlineCameraswitch />}
-        </button>
+        </button> */}
       </div>
 
     </div>

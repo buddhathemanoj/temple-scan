@@ -11,7 +11,7 @@ const Scanner = () => {
   const [showDialog, setDialog] = useState(false);
   const [processing, setProcessing] = useState(false);
   const [precScan, setPrecScan] = useState("");
-  const [selected, setSelected] = useState("rear");
+  const [selected, setSelected] = useState("environment");
   const [errorMessage, setErrorMessage] = useState(null);
 
   const handleScan = async (scanData) => {
@@ -37,7 +37,7 @@ const Scanner = () => {
   };
 
   const toggleCamera = () => {
-    setSelected(selected === "rear" ? "front" : "rear");
+    setSelected(selected === "rear" ? "user" : "environment");
   };
 
   return (

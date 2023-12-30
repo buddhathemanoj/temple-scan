@@ -53,9 +53,9 @@ const Scanner = () => {
       <div className="camerabox">
         {!showDialog && !processing && (
           <QrScanner
-            facingMode={selected}
+            // facingMode={selected}
             delay={500}
-            key="environment"
+            // key="environment"
             onError={handleError}
             constraints={{ facingMode: "environment" }}
             onScan={handleScan}
